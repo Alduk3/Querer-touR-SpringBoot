@@ -150,30 +150,30 @@ src/
 ```Markdown
 src/
 └── main/
-    ├── java/
-	│   └── com/
-	│       └── riwi/
-	│           └── querer-tour/
-	│               ├── querer-tourApp.java
-	│               ├── domain/
-	│               │   ├── entities/
-	│               │   └── repositories/
-	│               ├── api/
-	│               │   ├── controllers/
-	│               │   ├── dto/
-	│               │   └── error_handler/
-	│               ├── infrastructure/
-	│               │   ├── abstract_services/
-	│               │   ├── services/
-	│               │   └── helpers/
-	│               ├── util/
-	│               │   ├── enums/
-	│               │   └── exceptions/
-	│               └── config/
-    └── resources/
-		├── application.properties
-		├── configs/
-		└── email/
+   ├── java/
+   │   └── com/
+   │       └── riwi/
+   │           └── querer-tour/
+   │               ├── querer-tourApp.java
+   │               ├── domain/
+   │               │   ├── entities/
+   │               │   └── repositories/
+   │               ├── api/
+   │               │   ├── controllers/
+   │               │   ├── dto/
+   │               │   └── error_handler/
+   │               ├── infrastructure/
+   │               │   ├── abstract_services/
+   │               │   ├── services/
+   │               │   └── helpers/
+   │               ├── util/
+   │               │   ├── enums/
+   │               │   └── exceptions/
+   │               └── config/
+   └── resources/
+      ├── application.properties
+      ├── configs/
+      └── email/
 ```
 
 ## Levantamiento de Requisitos
