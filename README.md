@@ -28,12 +28,14 @@ En primera instancia la aplicación web está dirigida a turistas nacionales e i
 
 ### 1. Configuracion Base de Datos
 
+> [!WARNING]
+> Asegurate de tener instalado y activado el XAMPP 
+
+Usa Workbench o tu entorno preferido para crear la base de datos, y escribe el siguiente comando:
+
 ```MySql
 CREATE DATABASE querertour_api_db;
 ```
-
-> [!WARNING]
-> Si estas en windows asegurate de tener instalado y activado el XAMPP 
 
 ## Modelo o diseño del proyecto
 
@@ -108,6 +110,7 @@ Int id_where
 
 ### Modelo Arquitectura de componentes
 
+
 #### Arquitectura de microservicios
 ```mermaid
 graph LR
@@ -168,9 +171,9 @@ src/
 	│               │   └── exceptions/
 	│               └── config/
     └── resources/
-				├── application.properties
-				├── configs/
-				└── email/
+		├── application.properties
+		├── configs/
+		└── email/
 ```
 
 ## Levantamiento de Requisitos
