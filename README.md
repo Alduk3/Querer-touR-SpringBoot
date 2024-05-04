@@ -16,3 +16,10 @@ Además, busca brindar visibilidad de los comercios locales poco conocidos en lo
 ## Para quién estamos creando valor
 
 En primera instancia la aplicación web está dirigida a turistas nacionales e internacionales, pero también será de utilidad para los habitantes locales para obtener información y sitios de interés acerca de los pueblos del departamento de Antioquia.
+
+## Integrantes
+
+Carolina Garcia
+Santiago Echeverry
+Alejandro Duque
+Darwing Mosquera
