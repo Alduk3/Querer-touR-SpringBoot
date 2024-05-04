@@ -19,7 +19,170 @@ En primera instancia la aplicación web está dirigida a turistas nacionales e i
 
 ## Integrantes
 
-Carolina Garcia
-Santiago Echeverry
-Alejandro Duque
-Darwing Mosquera
+- Carolina Garcia
+- Santiago Echeverry
+- Alejandro Duque
+- Darwing Mosquera
+
+## Paso a Paso 
+
+### 1. Configuracion Base de Datos
+
+```MySql
+CREATE DATABASE querertour_api_db;
+```
+
+> [!WARNING]
+> Si estas en windows asegurate de tener instalado y activado el XAMPP 
+
+## Modelo o diseño del proyecto
+
+### Modelo Base de Datos
+
+```mermaid
+ erDiagram
+ TOWN ||--o{ SITE : has
+ TOWN{
+ UUID id
+ String name
+ String img
+ String audio
+ String location
+ String description
+ String short_description
+ String QR
+ }
+ SITE||--o{ COMPANY_BRANCH: located
+SITE {
+UUID id
+String name
+String audio
+String location
+String description
+String id_town
+String QR
+}
+COMPANY||--o{ COMPANY_BRANCH: has
+COMPANY {
+Int id
+String nit
+String name
+String phone
+String address
+String email
+String area
+}
+COMPANY_BRANCH {
+UUID id
+String name
+String id_site
+String id_company
+String QR
+}
+USER||--o{ COMMENT: has
+USER {
+Int id
+ String name
+ String document_type
+ String document
+ String last_name
+ String email
+ String password
+ String rol
+}
+COMMENT{
+Int id
+String comment
+String img
+String rating
+String creation_date
+Int id_user
+Int id_where
+}
+
+```
+### Modelo UML de clases
+
+> [!Note]
+> Se agregara una vez se termine el trabajo
+
+### Modelo Arquitectura de componentes
+
+#### Arquitectura de microservicios
+```mermaid
+graph LR
+A(Client) --> B(JWT)
+B --> C(NestJs)
+C --> D[(Mongo DB)]
+B --> H([JWT Secret])
+E --> H
+A --> E(Spring Secure)
+E --> F(Spring Boot)
+F --> G[(MySQL)]
+```
+
+#### Arquitectura Hexagonal
+##### NestJs
+```Markdown
+src/
+ ├── app/
+ │ ├── module/
+ │ │ ├── application/
+ │ │ │ ├── command/
+ │ │ │ ├── query/
+ │ │ │ └── handler/
+ │ │ ├── domain/
+ │ │ │ ├── model/
+ │ │ │ ├── service/
+ │ │ │ └── repository/
+ │ │ └── infrastructure/
+ │ │ ├── repository/
+ │ │ └── config/
+ │ └── shared/
+ │ └── utils/
+ └── main.ts
+```
+
+##### Spring Boot
+```Markdown
+src/
+└── main/
+    ├── java/
+	│   └── com/
+	│       └── riwi/
+	│           └── querer-tour/
+	│               ├── querer-tourApp.java
+	│               ├── domain/
+	│               │   ├── entities/
+	│               │   └── repositories/
+	│               ├── api/
+	│               │   ├── controllers/
+	│               │   ├── dto/
+	│               │   └── error_handler/
+	│               ├── infrastructure/
+	│               │   ├── abstract_services/
+	│               │   ├── services/
+	│               │   └── helpers/
+	│               ├── util/
+	│               │   ├── enums/
+	│               │   └── exceptions/
+	│               └── config/
+    └── resources/
+				├── application.properties
+				├── configs/
+				└── email/
+```
+
+## Levantamiento de Requisitos
+
+> [!Note]
+> Se tiene en documento, falta agregar al README
+
+## Tablero de gestion de proyectos
+
+Como equipo decidimos usar Notion como gestor de proyecto [Tablero](https://notion.io)
+
+## Documentación de los endpoints (Swagger)
+
+> [!Note]
+> Se agregara una vez se termine el trabajo
