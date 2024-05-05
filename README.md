@@ -26,7 +26,7 @@ En primera instancia la aplicación web está dirigida a turistas nacionales e i
 
 ## Paso a Paso 
 
-### 1. Configuracion Base de Datos
+### 1. Configuración Base de Datos
 
 > [!WARNING]
 > Asegurate de tener instalado y activado el XAMPP 
@@ -36,6 +36,60 @@ Usa Workbench o tu entorno preferido para crear la base de datos, y escribe el s
 ```MySql
 CREATE DATABASE querertour_api_db;
 ```
+
+### 2. Configuración del proyecto en local
+
+> [!WARNING]
+> Asegurate de tener instalado git
+
+Abre la consola y escribe los siguientes comandos
+
+- Configuración del nombre y correo en git
+
+```Git
+git config --global user.name "Tu nombre"
+git config --global user.email "Tu email"
+```
+
+- Navega a la carpeta donde deseas guardar el proyecto
+
+```
+cd ruta/donde/quieras/clonar
+```
+
+- Clonar el repositorio
+```Git
+git clone https://github.com/Alduk3/Querer-touR-SpringBoot.git
+```
+
+- Acceder a la carpeta del proyecto
+```
+cd Querer-touR-SpringBoot
+```
+
+- Navega a la rama de develop
+```Git
+git checkout develop
+```
+
+- Crear rama de trabajo feature
+```Git
+git branch feature/#-nombre-tarea
+```
+
+- Moverse a la rama
+```Git
+git checkout nombre-rama-trabajo
+```
+
+- Subir cambios primera vez
+```Git
+git push -u origin nombre-rama-trabajo
+```
+
+Luego puedes subirlo solo con ```git push```
+
+Recuerda hacer el pull request para conectarla a la develop
 
 ## Modelo o diseño del proyecto
 
