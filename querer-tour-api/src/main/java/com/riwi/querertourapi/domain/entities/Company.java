@@ -32,5 +32,5 @@ public class Company {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
 
-    private List<Branch_Company> branchCompanies;
+    
 }

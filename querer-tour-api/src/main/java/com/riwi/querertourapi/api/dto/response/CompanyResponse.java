@@ -20,5 +20,4 @@ public class CompanyResponse {
     private String email;
     private String area;
 
-    private List<Branch_CompanyToCompanyResponse> branchCompanies;
 }
