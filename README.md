@@ -237,7 +237,7 @@ src/
 
 ## Tablero de gestion de proyectos
 
-Como equipo decidimos usar Notion como gestor de proyecto [Tablero](https://notion.io)
+Como equipo decidimos usar Notion como gestor de proyecto [Tablero](https://www.notion.so/Querer-touR-2f335b82936149c3acc32b1735e9d448?pvs=4)
 
 ## Documentación de los endpoints (Swagger)
 
