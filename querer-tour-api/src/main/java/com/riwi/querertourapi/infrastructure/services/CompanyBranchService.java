@@ -82,7 +82,8 @@ public class CompanyBranchService implements ICompanyBranchService {
 
     @Override
     public CompanyBranchResponse getById(String id) {
-        return null;
+
+        return this.entityToResponse(this.find(id));
     }
 
     private CompanyBranchResponse entityToResponse(CompanyBranch companyBranch){

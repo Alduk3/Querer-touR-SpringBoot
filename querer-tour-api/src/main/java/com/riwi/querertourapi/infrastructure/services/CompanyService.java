@@ -92,7 +92,14 @@ public class CompanyService implements ICompanyService {
         return company;
     }
 
+    @Override
+    public CompanyResponse getById(String id) {
+        return this.entityToResponse(this.find(id));
+    }
+
     private Company find(String id){
         return this.companyRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Company"));
     }
+
+
 }

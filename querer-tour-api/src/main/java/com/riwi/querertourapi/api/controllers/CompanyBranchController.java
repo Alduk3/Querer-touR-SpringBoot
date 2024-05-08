@@ -3,11 +3,16 @@ package com.riwi.querertourapi.api.controllers;
 import com.riwi.querertourapi.api.dto.request.CompanyBranchRequest;
 import com.riwi.querertourapi.api.dto.response.CompanyBranchResponse;
 import com.riwi.querertourapi.infrastructure.abstract_services.ICompanyBranchService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -20,6 +25,10 @@ public class CompanyBranchController {
     @Autowired
     private final ICompanyBranchService companyBranchService;
 
+    @Operation(
+            summary = "List all company branches with pagination",
+            description = "You should send the page and the size of the page to receive all the corresponding variables"
+    )
     @GetMapping
     public ResponseEntity<Page<CompanyBranchResponse>> getAll(
             @RequestParam(defaultValue = "1") int page,
@@ -28,6 +37,20 @@ public class CompanyBranchController {
         return ResponseEntity.ok(this.companyBranchService.getAll(page -1, size));
     }
 
+    @ApiResponse(
+            responseCode = "400",
+            description = "When the id is not valid",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)
+                    )
+            }
+    )
+    @Operation(
+            summary = "Search a companyBranch by id",
+            description = "You should send the id in order to filter by id"
+    )
     @GetMapping(path = "/{id}")
     public ResponseEntity<CompanyBranchResponse> get(
             @PathVariable String id
@@ -35,6 +58,10 @@ public class CompanyBranchController {
         return ResponseEntity.ok(this.companyBranchService.getById(id));
     }
 
+    @Operation(
+            summary = "Create a company branch",
+            description = "Create a company branch"
+    )
     @PostMapping
     public ResponseEntity<CompanyBranchResponse> insert(
             @Validated
@@ -43,6 +70,10 @@ public class CompanyBranchController {
         return ResponseEntity.ok(this.companyBranchService.create(companyBranch));
     }
 
+    @Operation(
+            summary = "Delete a company branch by ID",
+            description = "Delete company branch by ID"
+    )
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Map<String, String>> delete(
             @PathVariable String id
@@ -58,6 +89,10 @@ public class CompanyBranchController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(
+            summary = "Update a company branch by ID",
+            description = "Update a company branch by ID"
+    )
     @PutMapping(path = "/{id}")
     public ResponseEntity<CompanyBranchResponse> update(
             @PathVariable String id,
