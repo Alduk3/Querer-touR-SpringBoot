@@ -45,8 +45,8 @@ public class CompanyController {
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<CompanyResponse> update(
-            @Validated
             @PathVariable String id,
+            @Validated
             @RequestBody CompanyRequest company
     ){
         return ResponseEntity.ok(this.companyService.update(id,company));

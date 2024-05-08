@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -36,6 +37,7 @@ public class CompanyBranchController {
 
     @PostMapping
     public ResponseEntity<CompanyBranchResponse> insert(
+            @Validated
             @RequestBody CompanyBranchRequest companyBranch
     ){
         return ResponseEntity.ok(this.companyBranchService.create(companyBranch));
@@ -59,7 +61,9 @@ public class CompanyBranchController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<CompanyBranchResponse> update(
             @PathVariable String id,
+            @Validated
             @RequestBody CompanyBranchRequest companyBranchRequest
+
     ){
         return ResponseEntity.ok(this.companyBranchService.update(id, companyBranchRequest));
     }
