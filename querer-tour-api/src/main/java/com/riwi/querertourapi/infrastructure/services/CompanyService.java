@@ -1,10 +1,10 @@
 package com.riwi.querertourapi.infrastructure.services;
 
 import com.riwi.querertourapi.api.dto.request.CompanyRequest;
-import com.riwi.querertourapi.api.dto.response.Branch_CompanyToCompanyResponse;
+import com.riwi.querertourapi.api.dto.response.CompanyBranchToCompanyResponse;
 import com.riwi.querertourapi.api.dto.response.CompanyResponse;
-import com.riwi.querertourapi.domain.entities.Branch_Company;
 import com.riwi.querertourapi.domain.entities.Company;
+import com.riwi.querertourapi.domain.entities.CompanyBranch;
 import com.riwi.querertourapi.domain.repositories.CompanyRepository;
 import com.riwi.querertourapi.infrastructure.abstract_services.ICompanyService;
 import lombok.AllArgsConstructor;
@@ -68,13 +68,13 @@ public class CompanyService implements ICompanyService {
 
         BeanUtils.copyProperties(entity, response);
 
-        response.setBranchCompanies(entity.getBranchCompanies().stream().map(branchCompany -> this.branch_CompanyToResponse(branchCompany)).collect(Collectors.toList()));
+        response.setCompanyBranches(entity.getCompanyBranches().stream().map(companyBranch -> this.companyBranchToResponse(companyBranch)).collect(Collectors.toList()));
 
         return response;
     }
 
-    private Branch_CompanyToCompanyResponse branch_CompanyToResponse(Branch_Company entity){
-        Branch_CompanyToCompanyResponse response = new Branch_CompanyToCompanyResponse();
+    private CompanyBranchToCompanyResponse companyBranchToResponse(CompanyBranch entity){
+        CompanyBranchToCompanyResponse response = new CompanyBranchToCompanyResponse();
         BeanUtils.copyProperties(entity, response);
 
         return response;
@@ -84,7 +84,7 @@ public class CompanyService implements ICompanyService {
     private Company requestToCompany(CompanyRequest request, Company company){
 
         //it necessary to initialize the array, cause when you create company you don't have branchCompanies
-        company.setBranchCompanies(new ArrayList<>());
+        company.setCompanyBranches(new ArrayList<>());
         BeanUtils.copyProperties(request, company);
 
         return company;
