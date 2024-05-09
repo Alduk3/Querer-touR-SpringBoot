@@ -15,6 +15,7 @@ public class TownResponse {
      * por id y no por otro parámetro
      *
      * */
+    private String id;
     private String name;
     private String img;
     private String audio;
