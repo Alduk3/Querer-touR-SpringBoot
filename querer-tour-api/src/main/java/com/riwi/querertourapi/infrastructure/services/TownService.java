@@ -32,7 +32,16 @@ public class TownService implements ITownService {
     private final TownRepository townRepository;
 
     @Override
-    public void delete(String s) {
+    public void delete(String id) {
+
+        /** Validar que el id que nos llegó como parámetro sea válido
+         * Se busca el town al que corresponde el ID
+         * */
+        Town town = this.find(id);
+        /** Utilizamos el repositorio y le pasamos el town
+         * (todo el objeto) que queremos eliminar
+         * */
+        this.townRepository.delete(town);
 
     }
 

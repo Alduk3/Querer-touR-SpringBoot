@@ -54,4 +54,13 @@ public class TownController {
         return ResponseEntity.ok(this.iTownService.create(town));
     }
 
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id){
+
+        this.iTownService.delete(id);
+
+        /** Responde un 204, es decir, que no hay contenido, es decir, qie si eliminó */
+        return ResponseEntity.noContent().build();
+    }
+
 }
