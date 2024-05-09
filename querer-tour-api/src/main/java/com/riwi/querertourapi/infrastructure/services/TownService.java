@@ -36,9 +36,19 @@ public class TownService implements ITownService {
 
     }
 
+    /** Método para crear un Town */
     @Override
     public TownResponse create(TownRequest request) {
-        return null;
+
+        /** Un request es lo que el usuario nos envía, entonces
+         * debemos convertir ese request a la entidad para
+         * guardarla en el repositorio (el repositorio solo
+         * recibe entidades)
+         * */
+
+        Town town = this.requestToTown(request, new Town());
+
+        return this.entityToEntityResponse(this.townRepository.save(town));
     }
 
     @Override
@@ -52,7 +62,7 @@ public class TownService implements ITownService {
         /** Lo primero que hacemos es validar si la página
          * es menor a cero, entonces que la página sea cero.
          * Si el usuario envía la página -1, se envía por
-         * defecto la página 0. Spring Boot empienza desde
+         * defecto la página 0. Spring Boot empieza desde
          * la página 0.*/
         if (page < 0) {
             page = 1;
@@ -135,5 +145,19 @@ public class TownService implements ITownService {
         BeanUtils.copyProperties(entity, response);
 
         return response;
+    }
+
+    /** Método para convertir un objeto TownResponse a Town */
+
+    private Town requestToTown (TownRequest request, Town town){
+
+        /**
+         * Realizamos la copia de todas las propiedades que tiene
+         * request y las va a pegar en town para retornar la
+         * entidad town con esas propiedades
+         * */
+
+        BeanUtils.copyProperties(request, town);
+        return town;
     }
 }

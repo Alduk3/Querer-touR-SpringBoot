@@ -1,15 +1,14 @@
 package com.riwi.querertourapi.api.controllers;
 
+import com.riwi.querertourapi.api.dto.request.TownRequest;
 import com.riwi.querertourapi.api.dto.response.TownResponse;
 import com.riwi.querertourapi.infrastructure.abstract_services.ITownService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.function.EntityResponse;
 
 /** En el controlador inyectamos la interfaz del servicio */
 @RestController
@@ -37,4 +36,12 @@ public class TownController {
          * */
         return ResponseEntity.ok(this.iTownService.getAll(page - 1, size));
     }
+
+    /** Controlador que llama al servicio para crear registros
+     * de Town en la DB */
+    @PostMapping
+    public ResponseEntity<TownResponse> insert(@RequestBody TownRequest town){
+        return ResponseEntity.ok(this.iTownService.create(town));
+    }
+
 }
