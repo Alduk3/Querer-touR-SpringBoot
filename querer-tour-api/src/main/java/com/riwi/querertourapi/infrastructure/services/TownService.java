@@ -106,6 +106,32 @@ public class TownService implements ITownService {
                 .map(this::entityToEntityResponse);
     }
 
+    @Override
+    public TownResponse getById(String id) {
+        /** Flujo del método: primero se llama lo que está
+         * más adentro en los paréntesis, es decir que lo
+         * primero que se va a ejecutar es this.find(id)
+         * Luego, en el método find, se le pasa el id y
+         * va y busca el id en la DB this.townRepository.findById(id)
+         * y si no lo encuentra saca el error orElseThrow().
+         * Después de encontrar el id this.townRepository.findById(id)
+         * se lo pasa al método entityToEntityResponse que lo
+         * convierte a un TownResponse */
+        return this.entityToEntityResponse(this.find(id));
+    }
+
+    /** Método find para simplificar el manejo de errores
+     * en por ejemplo, los caracteres que pueda ingresar de
+     * más un usuario, o un id que no corresponda
+     *
+     * Este método nos sirve para no repetir los orElseThrow
+     * en los demás métodos, ya que el método find se encargará
+     * de ello
+     * */
+    private Town find(String id){
+        return this.townRepository.findById(id).orElseThrow();
+    }
+
     /**
      *  Método encargado de convertir un objeto Town a TownResponse.
      *
@@ -160,4 +186,5 @@ public class TownService implements ITownService {
         BeanUtils.copyProperties(request, town);
         return town;
     }
+
 }

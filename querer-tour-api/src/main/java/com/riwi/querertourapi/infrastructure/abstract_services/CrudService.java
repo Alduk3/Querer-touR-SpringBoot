@@ -24,17 +24,23 @@ import org.springframework.data.domain.Page;
  * Puede tener más cosas en caso de que se requiera.
  * */
 public interface CrudService <RQ,RS,ID>{
-    /** Método delete: recibe por parámetro el id a
-     * eliminar de tipo ID genérico*/
-    public void delete(ID id);
-    /** Método create: retorna un RS (un response) y recibe
-     * por parámetro un RQ (un request) */
-    public RS create(RQ request);
-    /** Método update: retorna un RS (un response) y recibe
-     * por parámetro el id tipo ID y un RQ (un request) */
-    public RS update(ID id, RQ request);
     /** Método getAll: si se hace con paginación como en este
      * caso, retorna un Page de tipo RS (response) y le
      * pasamos de manera opcional el page y el size */
     public Page<RS> getAll(int page, int size);
+
+    /** Método getById: obtiene un Town por id */
+    public RS getById(ID id);
+
+    /** Método create: retorna un RS (un response) y recibe
+     * por parámetro un RQ (un request) */
+    public RS create(RQ request);
+
+    /** Método update: retorna un RS (un response) y recibe
+     * por parámetro el id tipo ID y un RQ (un request) */
+    public RS update(ID id, RQ request);
+
+    /** Método delete: recibe por parámetro el id a
+     * eliminar de tipo ID genérico*/
+    public void delete(ID id);
 }

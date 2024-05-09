@@ -11,4 +11,5 @@ import com.riwi.querertourapi.api.dto.response.TownResponse;
  * de las llaves de la interfaz
  * */
 public interface ITownService extends CrudService<TownRequest, TownResponse, String>{
+    //public TownResponse getById(String id);
 }

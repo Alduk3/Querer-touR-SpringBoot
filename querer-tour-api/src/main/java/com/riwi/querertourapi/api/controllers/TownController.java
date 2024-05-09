@@ -37,6 +37,16 @@ public class TownController {
         return ResponseEntity.ok(this.iTownService.getAll(page - 1, size));
     }
 
+    /** No pueden existir dos @GetMapping, por lo que el va a
+     * traer un id como parámetro que va a ser dinámico.
+     *
+     * Para traer ese id, se hace con la notación @PathVariable
+     */
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<TownResponse> getById(@PathVariable String id){
+        return ResponseEntity.ok(this.iTownService.getById(id));
+    }
+
     /** Controlador que llama al servicio para crear registros
      * de Town en la DB */
     @PostMapping
