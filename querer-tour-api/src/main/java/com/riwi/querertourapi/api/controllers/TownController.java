@@ -63,12 +63,4 @@ public class TownController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping(path = "/{id}")
-    public ResponseEntity<TownResponse> update(
-            @PathVariable String id, /** id por url */
-            @RequestBody TownRequest town /** town actualizado */
-    ){
-        return ResponseEntity.ok(this.iTownService.update(id, town));
-    }
-
 }
