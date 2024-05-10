@@ -5,6 +5,7 @@ import com.riwi.querertourapi.api.dto.response.TownResponse;
 import com.riwi.querertourapi.domain.entities.Town;
 import com.riwi.querertourapi.domain.repositories.TownRepository;
 import com.riwi.querertourapi.infrastructure.abstract_services.ITownService;
+import com.riwi.querertourapi.util.exceptions.IdNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,7 +151,12 @@ public class TownService implements ITownService {
      * de ello
      * */
     private Town find(String id){
-        return this.townRepository.findById(id).orElseThrow();
+        /**
+         * Generamos una instancia de la excepción que creamos,
+         * la cual recibe el nombre de la entidad para mostrarle
+         * el mensaje de error al usuario. Esto es una expresión lambda.
+         * */
+        return this.townRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Town"));
     }
 
     /**
