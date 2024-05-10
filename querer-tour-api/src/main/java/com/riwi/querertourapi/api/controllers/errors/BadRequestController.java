@@ -1,3 +1,4 @@
+
 package com.riwi.querertourapi.api.controllers.errors;
 
 import com.riwi.querertourapi.api.error_handler.BaseErrorResponse;

@@ -1,6 +1,6 @@
+
 package com.riwi.querertourapi.api.error_handler;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

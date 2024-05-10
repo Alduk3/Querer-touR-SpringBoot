@@ -1,3 +1,4 @@
+
 package com.riwi.querertourapi.infrastructure.abstract_services;
 
 import org.springframework.data.domain.Page;

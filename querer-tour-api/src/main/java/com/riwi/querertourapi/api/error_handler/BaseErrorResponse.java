@@ -1,3 +1,4 @@
+
 package com.riwi.querertourapi.api.error_handler;
 
 
@@ -11,7 +12,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//SUpeBuilder creates a constructor with the super of Serializable
+//SupeBuilder creates a constructor with the super of Serializable
 @SuperBuilder
 public class BaseErrorResponse implements Serializable {
     private String status;

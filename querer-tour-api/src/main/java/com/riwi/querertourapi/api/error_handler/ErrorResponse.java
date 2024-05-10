@@ -14,3 +14,4 @@ import lombok.experimental.SuperBuilder;
 public class ErrorResponse extends BaseErrorResponse{
     private String message;
 }
+
