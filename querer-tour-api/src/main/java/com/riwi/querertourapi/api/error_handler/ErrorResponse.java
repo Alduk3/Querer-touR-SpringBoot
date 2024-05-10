@@ -6,17 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-/** Clase para responder cuando el id no
- * sea correcto
- * */
-
-/**
- * El EqualsAndHashCode(callSuper = true) es para evitar
- * que se dupliquen los identificadores de las clases
- * o hash code
- * */
-
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true)// Not to generate two spaces in memory
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,3 +14,4 @@ import lombok.experimental.SuperBuilder;
 public class ErrorResponse extends BaseErrorResponse{
     private String message;
 }
+

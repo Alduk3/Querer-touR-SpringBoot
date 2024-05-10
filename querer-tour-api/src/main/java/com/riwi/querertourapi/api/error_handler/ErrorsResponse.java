@@ -1,3 +1,4 @@
+
 package com.riwi.querertourapi.api.error_handler;
 
 import lombok.AllArgsConstructor;
@@ -10,9 +11,9 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
-public class ErrorsResponse extends BaseErrorResponse{
+public class ErrorsResponse extends BaseErrorResponse {
     private List<String> errors;
- }
+}
