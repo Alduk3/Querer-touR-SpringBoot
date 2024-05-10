@@ -61,8 +61,20 @@ public class TownService implements ITownService {
     }
 
     @Override
-    public TownResponse update(String s, TownRequest request) {
-        return null;
+    public TownResponse update(String id, TownRequest request) {
+        /** Buscamos el town con el id */
+        Town town = this.find(id);
+
+        /** Tomamos el town que ya se había creado en la DB para
+         * actualizar todo menos el id y a la vez convertimos el
+         * town en entidad */
+        Town townUpdate = this.requestToTown(request, town);
+
+        /** El repositorio no tiene método update sino save.
+         * Guardamos el town actualizado y convertimos la
+         * respuesta
+         * */
+        return this.entityToEntityResponse(this.townRepository.save(townUpdate));
     }
 
     /** */
