@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.EntityResponse;
 
@@ -50,7 +51,9 @@ public class TownController {
     /** Controlador que llama al servicio para crear registros
      * de Town en la DB */
     @PostMapping
-    public ResponseEntity<TownResponse> insert(@RequestBody TownRequest town){
+    public ResponseEntity<TownResponse> insert(
+            @Validated /** Uso de la librería validation, siempre va antes del @RequestBody */
+            @RequestBody TownRequest town){
         return ResponseEntity.ok(this.iTownService.create(town));
     }
 
@@ -66,6 +69,7 @@ public class TownController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<TownResponse> update(
             @PathVariable String id, /** id por url */
+            @Validated /** Uso de la librería validation, siempre va antes del @RequestBody */
             @RequestBody TownRequest town /** town actualizado */
     ){
         return ResponseEntity.ok(this.iTownService.update(id, town));
