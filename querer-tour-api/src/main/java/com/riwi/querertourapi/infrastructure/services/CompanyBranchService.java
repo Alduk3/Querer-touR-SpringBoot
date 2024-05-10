@@ -8,6 +8,7 @@ import com.riwi.querertourapi.domain.entities.CompanyBranch;
 import com.riwi.querertourapi.domain.repositories.CompanyBranchRepository;
 import com.riwi.querertourapi.domain.repositories.CompanyRepository;
 import com.riwi.querertourapi.infrastructure.abstract_services.ICompanyBranchService;
+import com.riwi.querertourapi.util.exceptions.IdNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class CompanyBranchService implements ICompanyBranchService {
     public CompanyBranchResponse create(CompanyBranchRequest request) {
         //search for id of company that is valid inside request
         Company company = this.companyRepository.findById(request.getCompanyId())
-                .orElseThrow();
+                .orElseThrow(() -> new IdNotFoundException("CompanyBranch"));
 
         ////Convert request to entity
         CompanyBranch companyBranch = this.requestToCompanyBranch(request, new CompanyBranch());
@@ -53,7 +54,7 @@ public class CompanyBranchService implements ICompanyBranchService {
         //Search company by id
         CompanyBranch companyBranch = this.find(id);
 
-        Company company = this.companyRepository.findById(request.getCompanyId()).orElseThrow();
+        Company company = this.companyRepository.findById(request.getCompanyId()).orElseThrow(() -> new IdNotFoundException("CompanyBranch"));
 
         companyBranch = this.requestToCompanyBranch(request, companyBranch);
 
@@ -81,7 +82,8 @@ public class CompanyBranchService implements ICompanyBranchService {
 
     @Override
     public CompanyBranchResponse getById(String id) {
-        return null;
+
+        return this.entityToResponse(this.find(id));
     }
 
     private CompanyBranchResponse entityToResponse(CompanyBranch companyBranch){
@@ -110,6 +112,6 @@ public class CompanyBranchService implements ICompanyBranchService {
     }
 
     private CompanyBranch find(String id){
-        return this.companyBranchRepository.findById(id).orElseThrow();
+        return this.companyBranchRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Branch_Company"));
     }
 }

@@ -7,9 +7,11 @@ import com.riwi.querertourapi.domain.entities.Company;
 import com.riwi.querertourapi.domain.entities.CompanyBranch;
 import com.riwi.querertourapi.domain.repositories.CompanyRepository;
 import com.riwi.querertourapi.infrastructure.abstract_services.ICompanyService;
+import com.riwi.querertourapi.util.exceptions.IdNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -90,7 +92,14 @@ public class CompanyService implements ICompanyService {
         return company;
     }
 
-    private Company find(String id){
-        return this.companyRepository.findById(id).orElseThrow();
+    @Override
+    public CompanyResponse getById(String id) {
+        return this.entityToResponse(this.find(id));
     }
+
+    private Company find(String id){
+        return this.companyRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Company"));
+    }
+
+
 }
