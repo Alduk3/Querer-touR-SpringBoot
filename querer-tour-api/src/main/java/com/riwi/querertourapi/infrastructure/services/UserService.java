@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
@@ -21,11 +22,9 @@ public class UserService implements IUserService {
 
     @Autowired
     private final UserRepository userRepository;
-    @Autowired
-    private UserController userController;
 
     @Override
-    public Page<UserResponse> getAll(int page, int size, SortOrder sort) {
+    public Page<UserResponse> getAll(int page, int size) {
         if (page < 0) page = 0;
         PageRequest pagination = PageRequest.of(page, size);
 
@@ -33,15 +32,18 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserResponse create(UserRequest request) {
-        User user = new User();
-        return null;
+    public UserResponse getById(Integer id) {
+        return this.UserToUserResponse(this.find(id));
+
     }
 
     @Override
-    public UserResponse getById(Integer integer) {
-        return null;
+    public UserResponse create(UserRequest request) {
+     User user= this.userRequestToUser(request, new User());
+    return this.UserToUserResponse(this.userRepository.save(user)) ;
+
     }
+
 
     @Override
     public UserResponse update(UserRequest request, Integer integer) {
@@ -53,16 +55,14 @@ public class UserService implements IUserService {
 
     }
 
-//    private User userRequestToUser(UserRequest userRequest) {
-//        return User.builder()
-//                .name(userRequest.getName())
-//                .lastname(userRequest.getLastname())
-//                .documentType(userRequest.getDocumentType())
-//                .email(userRequest.getEmail())
-//                .password((userRequest.getPassword()))
-//                .roleUser(userRequest.getRole())
-//                .build();
-//    }
+    private User find(Integer id){
+        return this.userRepository.findById(id).orElseThrow();
+    }
+
+    private User userRequestToUser(UserRequest userRequest, User user) {
+       BeanUtils.copyProperties(userRequest, user);
+        return user;
+    }
 
     private UserResponse UserToUserResponse(User user) {
         UserResponse userResponse = new UserResponse();

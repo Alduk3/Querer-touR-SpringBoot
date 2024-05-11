@@ -13,5 +13,5 @@ public interface CrudService <RQ, RS, ID> {
 
     public void delete(ID id);
 
-    public Page<RS> getAll(int page, int size, SortOrder sort);
+    public Page<RS> getAll(int page, int size);
 }

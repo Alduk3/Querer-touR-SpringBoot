@@ -1,13 +1,12 @@
 package com.riwi.querertourapi.api.dto.request;
 
-import com.riwi.querertourapi.util.enums.DocType;
+import com.riwi.querertourapi.utils.enums.DocType;
+import com.riwi.querertourapi.utils.enums.RoleUser;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.management.relation.Role;
 
 @Data
 @Builder
@@ -39,6 +38,6 @@ public class UserRequest {
     private String password;
 
     @NotBlank(message = "This field is mandatory.")
-    private Role role;
+    private RoleUser roleUser;
 
 }

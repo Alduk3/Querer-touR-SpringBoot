@@ -1,7 +1,7 @@
 package com.riwi.querertourapi.api.dto.response;
 
-import com.riwi.querertourapi.util.enums.DocType;
-import com.riwi.querertourapi.util.enums.RoleUser;
+import com.riwi.querertourapi.utils.enums.DocType;
+import com.riwi.querertourapi.utils.enums.RoleUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
