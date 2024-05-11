@@ -1,4 +1,4 @@
-package com.querertour.QuerertouR.utils.enums;
+package com.riwi.querertourapi.util.enums;
 
 public enum DocType {
     TARJETA_DE_IDENTIDAD,

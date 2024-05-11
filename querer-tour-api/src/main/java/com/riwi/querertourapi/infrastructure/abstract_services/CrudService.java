@@ -1,4 +1,4 @@
-package com.querertour.QuerertouR.infrastructure.abstract_services;
+package com.riwi.querertourapi.infrastructure.abstract_services;
 
 import org.springframework.data.domain.Page;
 

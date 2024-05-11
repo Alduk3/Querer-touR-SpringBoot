@@ -1,13 +1,9 @@
-package com.querertour.QuerertouR.domain.entities;
+package com.riwi.querertourapi.domain.entities;
 
-import com.querertour.QuerertouR.utils.enums.DocType;
-import com.querertour.QuerertouR.utils.enums.Role;
+import com.riwi.querertourapi.util.enums.DocType;
+import com.riwi.querertourapi.util.enums.RoleUser;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Comments;
-import org.hibernate.sql.results.graph.Fetch;
-
-import java.util.List;
 
 @Entity
 @Data
@@ -34,7 +30,7 @@ public class User {
     private String password;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private RoleUser roleUser;
 
 //    @EqualsAndHashCode.Exclude
 //    @ToString.Exclude

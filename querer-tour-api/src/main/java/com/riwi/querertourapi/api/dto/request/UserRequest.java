@@ -1,12 +1,13 @@
-package com.querertour.QuerertouR.api.dto.request;
+package com.riwi.querertourapi.api.dto.request;
 
-import com.querertour.QuerertouR.utils.enums.DocType;
-import com.querertour.QuerertouR.utils.enums.Role;
+import com.riwi.querertourapi.util.enums.DocType;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.management.relation.Role;
 
 @Data
 @Builder

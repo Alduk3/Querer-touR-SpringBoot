@@ -1,6 +1,6 @@
-package com.querertour.QuerertouR.domain.repositories;
+package com.riwi.querertourapi.domain.repositories;
 
-import com.querertour.QuerertouR.domain.entities.User;
+import com.riwi.querertourapi.domain.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,7 @@
-package com.querertour.QuerertouR.api.dto.response;
+package com.riwi.querertourapi.api.dto.response;
 
-import com.querertour.QuerertouR.utils.enums.DocType;
-import com.querertour.QuerertouR.utils.enums.Role;
-import jakarta.persistence.*;
+import com.riwi.querertourapi.util.enums.DocType;
+import com.riwi.querertourapi.util.enums.RoleUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +20,6 @@ public class UserResponse {
     private Integer document;
     private String email;
 //    private String password;
-    private Role role;
+    private RoleUser roleUser;
 
 }
