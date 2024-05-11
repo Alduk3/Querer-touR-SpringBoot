@@ -26,7 +26,7 @@ public class UserController {
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size
     ) {
-        return ResponseEntity.ok(this.userService.getAll(page-1, size ));
+        return ResponseEntity.ok(this.userService.getAll(page - 1, size));
     }
 
     @GetMapping(path = {"/{id}"})
@@ -34,10 +34,19 @@ public class UserController {
         return ResponseEntity.ok(this.userService.getById(id));
     }
 
-
-
     @PostMapping
     public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
-       return ResponseEntity.ok(this.userService.create(userRequest));
+        return ResponseEntity.ok(this.userService.create(userRequest));
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+         this.userService.delete(id);
+         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable Integer id, @RequestBody UserRequest userRequest) {
+       return ResponseEntity.ok(this.userService.update(userRequest, id));
     }
 }

@@ -44,14 +44,17 @@ public class UserService implements IUserService {
 
     }
 
-
     @Override
-    public UserResponse update(UserRequest request, Integer integer) {
-        return null;
+    public UserResponse update(UserRequest request, Integer id) {
+        User user = this.find(id);
+        User updatedUser = this.userRequestToUser(request, user);
+        return this.UserToUserResponse(this.userRepository.save(updatedUser));
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(Integer id) {
+        User user = this.find(id);
+        this.userRepository.delete(user);
 
     }
 
