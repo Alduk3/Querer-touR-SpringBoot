@@ -4,6 +4,7 @@ import com.riwi.querertourapi.api.dto.request.UserRequest;
 import com.riwi.querertourapi.api.dto.response.UserResponse;
 import com.riwi.querertourapi.domain.entities.User;
 import com.riwi.querertourapi.infrastructure.abstract_services.IUserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @AllArgsConstructor
+
+@Tag(name = "Users0")
 public class UserController {
 
     @Autowired
