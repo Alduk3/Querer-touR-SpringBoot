@@ -33,12 +33,12 @@ public class UserController {
     }
 
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity<UserResponse> getUserById(@PathVariable Integer id) {
+    public ResponseEntity<UserResponse> getUserById(@Validated @PathVariable Integer id) {
         return ResponseEntity.ok(this.userService.getById(id));
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserResponse> createUser(@Validated @RequestBody UserRequest userRequest) {
         return ResponseEntity.ok(this.userService.create(userRequest));
     }
 
@@ -49,7 +49,9 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable Integer id, @RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserResponse> updateUser(
+            @PathVariable Integer id,
+            @Validated @RequestBody UserRequest userRequest) {
        return ResponseEntity.ok(this.userService.update(userRequest, id));
     }
 }

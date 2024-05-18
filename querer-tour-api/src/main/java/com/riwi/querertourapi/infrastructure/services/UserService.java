@@ -6,6 +6,7 @@ import com.riwi.querertourapi.api.dto.response.UserResponse;
 import com.riwi.querertourapi.domain.entities.User;
 import com.riwi.querertourapi.domain.repositories.UserRepository;
 import com.riwi.querertourapi.infrastructure.abstract_services.IUserService;
+import com.riwi.querertourapi.utils.exceptions.BadRequestException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +44,11 @@ public class UserService implements IUserService {
     return this.UserToUserResponse(this.userRepository.save(user)) ;
 
     }
-
     @Override
     public UserResponse update(UserRequest request, Integer id) {
         User user = this.find(id);
         User updatedUser = this.userRequestToUser(request, user);
+        updatedUser.setId(id);
         return this.UserToUserResponse(this.userRepository.save(updatedUser));
     }
 
@@ -59,7 +60,7 @@ public class UserService implements IUserService {
     }
 
     private User find(Integer id){
-        return this.userRepository.findById(id).orElseThrow();
+        return this.userRepository.findById(id).orElseThrow(()-> new BadRequestException("User does not exist."));
     }
 
     private User userRequestToUser(UserRequest userRequest, User user) {

@@ -27,14 +27,14 @@ public class BadRequestController {
 
         exception.getBindingResult().getFieldErrors().forEach(e -> {
             Map<String,String> error = new HashMap<>();
-            error.put("error", e.getDefaultMessage()); //agregar al map el error
-            error.put("field", e.getField()); //agregar al map en donde ocurrió el error
+            error.put("error", e.getDefaultMessage());
+            error.put("field", e.getField());
             errors.add(error);
         });
 
         return ErrorsResponse.builder()
-                .code(HttpStatus.BAD_REQUEST.value()) //400
-                .status(HttpStatus.BAD_REQUEST.name()) //BAD_REQUEST
+                .code(HttpStatus.BAD_REQUEST.value())
+                .status(HttpStatus.BAD_REQUEST.name())
                 .errors(errors)
                 .build();
     }

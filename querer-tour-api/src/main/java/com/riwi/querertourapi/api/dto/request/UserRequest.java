@@ -22,7 +22,7 @@ public class UserRequest {
     @Size(min = 1, max = 50, message = "LastName must have 1-50 characters")
     private String lastname;
 
-    @NotBlank(message = "This field is mandatory.")
+    @NotNull(message = "This field is mandatory.")
     private DocType documentType;
 
     @NotNull(message = "This field is mandatory.")
@@ -37,7 +37,7 @@ public class UserRequest {
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
     private String password;
 
-    @NotBlank(message = "This field is mandatory.")
+    @NotNull(message = "This field is mandatory.")
     private RoleUser roleUser;
 
 }

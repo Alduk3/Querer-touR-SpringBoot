@@ -12,7 +12,6 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//SupeBuilder creates a constructor with the super of Serializable
 @SuperBuilder
 public class BaseErrorResponse implements Serializable {
     private String status;
