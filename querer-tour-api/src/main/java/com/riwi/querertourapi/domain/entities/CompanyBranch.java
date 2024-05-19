@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CompanyBranch {
+public class    CompanyBranch {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -20,4 +20,9 @@ public class CompanyBranch {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id" , referencedColumnName = "id" )
     private Company company;
+
+    // Connection to site
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "site_id", referencedColumnName = "id")
+    private Site site;
 }
