@@ -8,7 +8,7 @@ import com.riwi.querertourapi.domain.entities.CompanyBranch;
 import com.riwi.querertourapi.domain.repositories.CompanyBranchRepository;
 import com.riwi.querertourapi.domain.repositories.CompanyRepository;
 import com.riwi.querertourapi.infrastructure.abstract_services.ICompanyBranchService;
-import com.riwi.querertourapi.util.exceptions.IdNotFoundException;
+import com.riwi.querertourapi.utils.exceptions.IdNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,7 @@ public class CompanyBranchService implements ICompanyBranchService {
 
     @Autowired
     private final CompanyRepository companyRepository;
+
     @Override
     public void delete(String id) {
         //Search

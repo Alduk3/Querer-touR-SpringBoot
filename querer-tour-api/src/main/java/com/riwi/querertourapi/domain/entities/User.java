@@ -5,6 +5,8 @@ import com.riwi.querertourapi.utils.enums.RoleUser;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -32,13 +34,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleUser roleUser;
 
-//    @EqualsAndHashCode.Exclude
-//    @ToString.Exclude
-//    @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = false)
-//    private List<Comment> comments;
 
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
 //    @OneToMany(fetch = FetchType.EAGER, mappedBy = "")
-//    private List<Comment> commentList;
+    @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = false)
+    private List<Comment> commentList;
 }

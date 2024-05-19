@@ -5,7 +5,7 @@ import com.riwi.querertourapi.api.dto.response.TownResponse;
 import com.riwi.querertourapi.domain.entities.Town;
 import com.riwi.querertourapi.domain.repositories.TownRepository;
 import com.riwi.querertourapi.infrastructure.abstract_services.ITownService;
-import com.riwi.querertourapi.util.exceptions.IdNotFoundException;
+import com.riwi.querertourapi.utils.exceptions.IdNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
