@@ -45,7 +45,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserResponse update(UserRequest request, Integer id) {
+    public UserResponse update(Integer id, UserRequest request) {
         User user = this.find(id);
         User updatedUser = this.userRequestToUser(request, user);
         return this.UserToUserResponse(this.userRepository.save(updatedUser));

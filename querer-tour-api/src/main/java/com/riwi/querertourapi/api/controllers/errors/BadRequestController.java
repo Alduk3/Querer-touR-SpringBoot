@@ -4,7 +4,7 @@ package com.riwi.querertourapi.api.controllers.errors;
 import com.riwi.querertourapi.api.error_handler.BaseErrorResponse;
 import com.riwi.querertourapi.api.error_handler.ErrorResponse;
 import com.riwi.querertourapi.api.error_handler.ErrorsResponse;
-import com.riwi.querertourapi.util.exceptions.IdNotFoundException;
+import com.riwi.querertourapi.utils.exceptions.IdNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

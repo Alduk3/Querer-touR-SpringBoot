@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserResponse> createUser( @RequestBody UserRequest userRequest) {
         return ResponseEntity.ok(this.userService.create(userRequest));
     }
 
@@ -50,6 +51,6 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<UserResponse> updateUser(@PathVariable Integer id, @RequestBody UserRequest userRequest) {
-       return ResponseEntity.ok(this.userService.update(userRequest, id));
+       return ResponseEntity.ok(this.userService.update(id, userRequest));
     }
 }

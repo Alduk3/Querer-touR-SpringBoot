@@ -5,5 +5,5 @@ import com.riwi.querertourapi.api.dto.response.CompanyBranchResponse;
 import com.riwi.querertourapi.domain.repositories.CompanyBranchRepository;
 
 public interface ICompanyBranchService extends CrudService<CompanyBranchRequest, CompanyBranchResponse,String>{
-    public CompanyBranchResponse getById(String id);
+  //  public CompanyBranchResponse getById(String id);
 }

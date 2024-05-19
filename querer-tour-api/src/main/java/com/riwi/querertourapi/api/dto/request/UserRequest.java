@@ -34,7 +34,7 @@ public class UserRequest {
 
     @Size(min = 8, max = 32, message = "Password must have at least 8 characters")
     @NotBlank(message = "This field is mandatory.")
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+//    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
     private String password;
 
     @NotBlank(message = "This field is mandatory.")
