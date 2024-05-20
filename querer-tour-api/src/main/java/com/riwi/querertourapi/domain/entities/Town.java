@@ -1,9 +1,9 @@
 package com.riwi.querertourapi.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Entity(name = "town")
 @Data /** Crea los getters, setters y el to string */
@@ -27,4 +27,10 @@ public class Town {
     private String short_description;
     @Column(nullable = false)
     private String qr;
+
+    // Connection to site
+    @OneToMany(mappedBy = "town", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.EAGER)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Site> sites;
 }
