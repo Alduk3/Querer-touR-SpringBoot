@@ -14,9 +14,9 @@ import java.util.List;
 @NoArgsConstructor
 
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
     @Column(nullable = false, length = 40)
     private String name;
     @Column(nullable = false, length = 50)

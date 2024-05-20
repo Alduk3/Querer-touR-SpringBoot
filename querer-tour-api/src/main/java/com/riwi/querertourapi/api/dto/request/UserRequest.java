@@ -14,6 +14,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class UserRequest {
+
+    @NotNull(message = "This field can't be empty")
+    private String id;
+
     @NotBlank(message = "This field is mandatory.")
     @Size(min = 1, max = 50, message = "Name must have 1-50 characters")
     private String name;
@@ -32,10 +36,13 @@ public class UserRequest {
     @Email(message = "This field is mandatory.")
     private String email;
 
+
+    //Delete
     @Size(min = 8, max = 32, message = "Password must have at least 8 characters")
     @NotBlank(message = "This field is mandatory.")
 //    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
     private String password;
+
 
     @NotBlank(message = "This field is mandatory.")
     private RoleUser roleUser;

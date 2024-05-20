@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class UserResponse {
-    private Integer id;
+    private String id;
     private String name;
     private String lastname;
     private DocType documentType;

@@ -32,7 +32,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserResponse getById(Integer id) {
+    public UserResponse getById(String id) {
         return this.UserToUserResponse(this.find(id));
 
     }
@@ -45,20 +45,20 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserResponse update(Integer id, UserRequest request) {
+    public UserResponse update(String id, UserRequest request) {
         User user = this.find(id);
         User updatedUser = this.userRequestToUser(request, user);
         return this.UserToUserResponse(this.userRepository.save(updatedUser));
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         User user = this.find(id);
         this.userRepository.delete(user);
 
     }
 
-    private User find(Integer id){
+    private User find(String id){
         return this.userRepository.findById(id).orElseThrow();
     }
 
