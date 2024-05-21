@@ -32,10 +32,10 @@ public class UserRequest {
     @Email(message = "This field is mandatory.")
     private String email;
 
-    @Size(min = 8, max = 32, message = "Password must have at least 8 characters")
-    @NotBlank(message = "This field is mandatory.")
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
-    private String password;
+//    @Size(min = 8, max = 32, message = "Password must have at least 8 characters")
+//    @NotBlank(message = "This field is mandatory.")
+//    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+//    private String password;
 
     @NotNull(message = "This field is mandatory.")
     private RoleUser roleUser;

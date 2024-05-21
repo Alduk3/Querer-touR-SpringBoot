@@ -26,8 +26,8 @@ public class User {
     private Integer document;
     @Column(nullable = false, length = 50)
     private String email;
-    @Column(nullable = false)
-    private String password;
+//    @Column(nullable = false)
+//    private String password;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RoleUser roleUser;

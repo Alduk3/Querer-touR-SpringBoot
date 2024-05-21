@@ -14,4 +14,6 @@ public interface CrudService <RQ, RS, ID> {
     public void delete(ID id);
 
     public Page<RS> getAll(int page, int size);
+
+    public RS getByName(String name);
 }

@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "660b1ac7-2eac-46b0-9f62-c4bbd8d63b72",
+		"name": "QuereTouR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32693629"
+	},
+	"item": [
+		{
+			"name": "UserCrud",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"Ayda Luz\",\r\n    \"lastname\": \"Mosquera\",\r\n    \"documentType\": \"CEDULA_DE_CIUDADANIA\",\r\n    \"document\": 1345612,\r\n    \"email\": \"Yuseth.andrade@gmail.com\",\r\n    \"password\": \"*Ayadlauxs4785*\",\r\n    \"roleUser\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"Ayda Luz\",\r\n    \"lastname\": \"serna\",\r\n    \"documentType\": \"CEDULA_DE_CIUDADANIA\",\r\n    \"document\": 1345612,\r\n    \"email\": \"Yuseth.andrade@gmail.com\",\r\n    \"password\": \"*AydaLuz67558*\",\r\n    \"roleUser\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,6 +1,5 @@
 package com.riwi.querertourapi.infrastructure.services;
 
-import com.riwi.querertourapi.api.controllers.UserController;
 import com.riwi.querertourapi.api.dto.request.UserRequest;
 import com.riwi.querertourapi.api.dto.response.UserResponse;
 import com.riwi.querertourapi.domain.entities.User;
@@ -12,10 +11,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.swing.*;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -30,6 +28,12 @@ public class UserService implements IUserService {
         PageRequest pagination = PageRequest.of(page, size);
 
         return this.userRepository.findAll(pagination).map(this::UserToUserResponse);
+    }
+
+    @Override
+    public UserResponse getByName(String name) {
+        Optional<User> user = this.userRepository.findByName(name);
+        return user.map(this::UserToUserResponse).orElse(null);
     }
 
     @Override

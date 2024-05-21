@@ -22,6 +22,7 @@ import java.util.List;
 //@Tag(name = "Users")
 public class UserController {
 
+    @Autowired
     private final IUserService userService;
 
     @GetMapping
@@ -32,9 +33,14 @@ public class UserController {
         return ResponseEntity.ok(this.userService.getAll(page - 1, size));
     }
 
-    @GetMapping(path = {"/{id}"})
+    @GetMapping(path = {"/id/{id}"})
     public ResponseEntity<UserResponse> getUserById(@Validated @PathVariable Integer id) {
         return ResponseEntity.ok(this.userService.getById(id));
+    }
+
+    @GetMapping(path = "/name/{name}")
+    public ResponseEntity<UserResponse> getUserByName(@Validated @PathVariable String name) {
+        return ResponseEntity.ok(this.userService.getByName(name));
     }
 
     @PostMapping
