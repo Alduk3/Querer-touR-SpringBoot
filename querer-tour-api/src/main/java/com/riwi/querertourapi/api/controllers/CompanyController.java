@@ -16,7 +16,7 @@ import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping
 @AllArgsConstructor
 public class CompanyController {
     @Autowired
@@ -27,7 +27,7 @@ public class CompanyController {
             description = "You should send the page and the size of the page to receive all the corresponding variables"
 
     )
-    @GetMapping
+    @GetMapping(path = "/public/company")
     public ResponseEntity<Page<CompanyResponse>> get(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "2") int size
@@ -49,7 +49,7 @@ public class CompanyController {
             summary = "Search a company by id",
             description = "You should send the id in order to filter by id"
     )
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/company/{id}")
     public ResponseEntity<CompanyResponse> getById(
             @PathVariable String id
     ){
@@ -60,7 +60,7 @@ public class CompanyController {
             summary = "Create a company",
             description = "Create a company"
     )
-    @PostMapping
+    @PostMapping(path = "/admin/company")
     public ResponseEntity<CompanyResponse> insert(
             @Validated
             @RequestBody CompanyRequest company
@@ -72,7 +72,7 @@ public class CompanyController {
             summary = "Delete a company by ID",
             description = "Delete company by ID"
     )
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/company/{id}")
     public ResponseEntity<Void> delete(
             @PathVariable String id
     ){
@@ -86,7 +86,7 @@ public class CompanyController {
             summary = "Update a company by ID",
             description = "Update company by ID"
     )
-    @PutMapping(path = "/{id}")
+    @PutMapping(path = "/company/{id}")
     public ResponseEntity<CompanyResponse> update(
             @PathVariable String id,
             @Validated

@@ -19,7 +19,7 @@ import org.springframework.web.servlet.function.EntityResponse;
 
 /** En el controlador inyectamos la interfaz del servicio */
 @RestController
-@RequestMapping("/town")
+@RequestMapping
 @AllArgsConstructor
 /** Con Tag podemos cambiar el nombre en Swagger*/
 @Tag(name = "Towns") // Usando el Swagger
@@ -32,7 +32,7 @@ public class TownController {
             summary = "Lista todos los pueblos con paginación",
             description = "Debes enviar la página y el tamaño de la página para recibir u obtener todos los pueblos correspondientes."
     )
-    @GetMapping
+    @GetMapping(path = "/public/town")
     /** Estamos respondiendo una entidad que va a tener como
      * genérico un page que tiene como genérico un TownResponse
      * */
@@ -71,7 +71,7 @@ public class TownController {
             summary = "Lista un pueblo por ID",
             description = "Debes enviar el id del pueblo a buscar, para obtener el pueblo correspondiente."
     )
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/public/town/{id}")
     public ResponseEntity<TownResponse> getById(@PathVariable String id){
         return ResponseEntity.ok(this.iTownService.getById(id));
     }
@@ -83,7 +83,7 @@ public class TownController {
             summary = "Crea un pueblo",
             description = "Debes enviar los valores correspondientes para crear un pueblo"
     )
-    @PostMapping
+    @PostMapping(path = "/town")
     public ResponseEntity<TownResponse> insert(
             @Validated /** Uso de la librería validation, siempre va antes del @RequestBody */
             @RequestBody TownRequest town){
@@ -104,7 +104,7 @@ public class TownController {
             summary = "Elimina un pueblo por id",
             description = "Debes enviar el id del pueblo a eliminar."
     )
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/town/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id){
 
         this.iTownService.delete(id);
@@ -127,7 +127,7 @@ public class TownController {
             summary = "Actualiza un pueblo por id",
             description = "Actualiza un pueblo por id"
     )
-    @PutMapping(path = "/{id}")
+    @PutMapping(path = "/town/{id}")
     public ResponseEntity<TownResponse> update(
             @PathVariable String id, /** id por url */
             @Validated /** Uso de la librería validation, siempre va antes del @RequestBody */

@@ -14,33 +14,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(path = "/site")
+@RequestMapping
 @AllArgsConstructor
 public class SiteController {
     @Autowired
     private ISiteService siteService;
 
-    @GetMapping
+    @GetMapping(path = "/public/site")
     public ResponseEntity<Page<SiteResponse>> getAll(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "2") int size) {
        return ResponseEntity.ok(this.siteService.getAll(page -1, size));
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/public/site/{id}")
     public ResponseEntity<SiteResponse> get(@PathVariable String id) {
         return ResponseEntity.ok(this.siteService.getById(id));
     }
 
-    @PostMapping
+    @PostMapping(path = "/site")
     public ResponseEntity<SiteResponse> insert(@Validated @RequestBody SiteRequest siteRequest) {
         return ResponseEntity.ok(this.siteService.create(siteRequest));
     }
 
-    @PutMapping(path = "/{id}")
+    @PutMapping(path = "/site/{id}")
     public ResponseEntity<SiteResponse> update(@PathVariable String id, @Validated @RequestBody SiteRequest siteRequest) {
         return ResponseEntity.ok(this.siteService.update(id,siteRequest));
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/site/{id}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable String id) {
         Map<String, String> response = new HashMap<>();
         response.put("message", "Site was deleted successfully");

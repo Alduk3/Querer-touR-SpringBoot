@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(path = "/companyBranch")
+@RequestMapping
 @AllArgsConstructor
 public class CompanyBranchController {
     @Autowired
@@ -29,7 +29,7 @@ public class CompanyBranchController {
             summary = "List all company branches with pagination",
             description = "You should send the page and the size of the page to receive all the corresponding variables"
     )
-    @GetMapping
+    @GetMapping(path = "/public/companyBranch")
     public ResponseEntity<Page<CompanyBranchResponse>> getAll(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "2") int size
@@ -51,7 +51,7 @@ public class CompanyBranchController {
             summary = "Search a companyBranch by id",
             description = "You should send the id in order to filter by id"
     )
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/companyBranch/{id}")
     public ResponseEntity<CompanyBranchResponse> get(
             @PathVariable String id
     ){
@@ -62,7 +62,7 @@ public class CompanyBranchController {
             summary = "Create a company branch",
             description = "Create a company branch"
     )
-    @PostMapping
+    @PostMapping(path = "/companyBranch")
     public ResponseEntity<CompanyBranchResponse> insert(
             @Validated
             @RequestBody CompanyBranchRequest companyBranch
@@ -74,7 +74,7 @@ public class CompanyBranchController {
             summary = "Delete a company branch by ID",
             description = "Delete company branch by ID"
     )
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/companyBranch/{id}")
     public ResponseEntity<Map<String, String>> delete(
             @PathVariable String id
     ){
@@ -93,7 +93,7 @@ public class CompanyBranchController {
             summary = "Update a company branch by ID",
             description = "Update a company branch by ID"
     )
-    @PutMapping(path = "/{id}")
+    @PutMapping(path = "/companyBranch/{id}")
     public ResponseEntity<CompanyBranchResponse> update(
             @PathVariable String id,
             @Validated

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping
 @AllArgsConstructor
 
 @Tag(name = "Users0")
@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     private final IUserService userService;
 
-    @GetMapping
+    @GetMapping(path = "/user")
     public ResponseEntity<Page<UserResponse>> getAllUsers(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size
@@ -33,23 +33,23 @@ public class UserController {
         return ResponseEntity.ok(this.userService.getAll(page - 1, size));
     }
 
-    @GetMapping(path = {"/{id}"})
+    @GetMapping(path = {"/user/{id}"})
     public ResponseEntity<UserResponse> getUserById(@PathVariable String id) {
         return ResponseEntity.ok(this.userService.getById(id));
     }
 
-    @PostMapping
+    @PostMapping(path = "/public/user")
     public ResponseEntity<UserResponse> createUser( @RequestBody UserRequest userRequest) {
         return ResponseEntity.ok(this.userService.create(userRequest));
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/user/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable String id) {
          this.userService.delete(id);
          return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/user/{id}")
     public ResponseEntity<UserResponse> updateUser(@PathVariable String id, @RequestBody UserRequest userRequest) {
        return ResponseEntity.ok(this.userService.update(id, userRequest));
     }

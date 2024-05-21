@@ -22,6 +22,7 @@ public class CommentController {
     @Autowired
     private ICommentService commentService;
 
+    
     @GetMapping
     public ResponseEntity<Page<CommentResponse>> findAll(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "2") int size ) {
         return ResponseEntity.ok(this.commentService.getAll(page -1, size));
